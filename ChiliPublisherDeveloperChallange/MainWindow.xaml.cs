@@ -24,5 +24,10 @@ namespace ChiliPublisherDeveloperChallange
         {
             InitializeComponent();
         }
+
+        private void ReadXMLFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
