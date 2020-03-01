@@ -34,11 +34,37 @@ namespace ChiliPublisherDeveloperChallange
             item = XmlProcessor.GetXmlRootObjectCommands(@"C:\Projects\BeerPack.xml");
 
 
-          //  MessageBox.Show(item.Lights.LightsItem.Z);
 
-            foreach (var c in item.Sequences.SequenceItems.SequenceItem)
+            foreach (var c in item.Panels.PanelsItem.AttachedPanelsItems.AttachedPanelsItem)
             {
-                MessageBox.Show(c.Panel);
+
+                
+                foreach (var d in c.AttachedPanelsItems.AttachedPanelsItem)
+                {
+                    
+                    foreach (var k in d.AttachedPanelsItems.AttachedPanelsItem)
+                    {
+
+                        foreach (var ein in k.AttachedPanelsItems.AttachedPanelsItem)
+                        {
+                            MessageBox.Show(ein.PanelId);
+
+                        }
+
+                    }
+
+                }
+
+                //foreach (var a in c.PanelsItem.AttachedPanels)
+                //{
+                //    MessageBox.Show(a.PanelsItem.PanelId);
+
+                //}
+                //foreach (var v in c.AttachedPanels)
+                //{
+                //    MessageBox.Show(v.PanelsItem);
+
+                //}
             }
         }
     }

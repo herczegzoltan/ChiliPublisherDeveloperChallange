@@ -82,8 +82,8 @@ namespace ChiliPublisherDeveloperChallange.Model
 		[XmlElement(ElementName = "materials")]
 		public Materials Materials { get; set; }
 
-		//[XmlElement(ElementName = "panels")]
-		//public Panels Panels { get; set; }
+		[XmlElement(ElementName = "panels")]
+		public Panels Panels { get; set; }
 
 		[XmlElement(ElementName = "sequences")]
 		public Sequences Sequences { get; set; }

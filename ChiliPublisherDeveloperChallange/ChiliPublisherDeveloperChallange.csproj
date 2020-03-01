@@ -70,12 +70,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Panels\AttachedPanels.cs" />
     <Compile Include="Model\Materials\MaterialsItem.cs" />
+    <Compile Include="Model\Panels\AttachedPanelsItem.cs" />
+    <Compile Include="Model\Panels\AttachedPanelsItems.cs" />
+    <Compile Include="Model\Panels\PanelsItems.cs" />
     <Compile Include="Model\Panels\PanelsItem.cs" />
     <Compile Include="Model\RootObject.cs" />
     <Compile Include="Model\Lights\LightsItem.cs" />
-    <Compile Include="Infrastructure\Itemold.cs" />
     <Compile Include="Model\Lights\Lights.cs" />
     <Compile Include="Model\Materials\Materials.cs" />
     <Compile Include="Model\Panels\Panels.cs" />

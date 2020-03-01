@@ -3,10 +3,9 @@ using System.Xml.Serialization;
 
 namespace ChiliPublisherDeveloperChallange.Model
 {
-	public class Materials
+	public class PanelsItems
 	{
-		[XmlElement(ElementName = "item")]
-		public List<MaterialsItem> MaterialsItem { get; set; }
+		[XmlElement(ElementName = "attachedPanels")]
+		public PanelsItem PanelsItem { get; set; }
 	}
-
 }

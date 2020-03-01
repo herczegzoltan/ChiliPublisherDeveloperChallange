@@ -41,7 +41,7 @@ namespace ChiliPublisherDeveloperChallange.Model
 		public string MouseEnabled { get; set; }
 
 		[XmlElement(ElementName = "attachedPanels")]
-		public List<AttachedPanels> AttachedPanels { get; set; }
+		public AttachedPanelsItems AttachedPanelsItems { get; set; }
 
 	}
 }

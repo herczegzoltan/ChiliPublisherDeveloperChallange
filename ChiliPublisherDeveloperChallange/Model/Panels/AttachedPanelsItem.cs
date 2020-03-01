@@ -3,15 +3,8 @@ using System.Xml.Serialization;
 
 namespace ChiliPublisherDeveloperChallange.Model
 {
-    [XmlRoot(ElementName = "attachedPanels")]
-	public class AttachedPanels
-	{
-
-		[XmlElement(ElementName = "item")]
-		public List<AttachedPanels> AttachedPanelsItem { get; set; }
-		 
-		//[XmlElement(ElementName = "attachedPanels")]
-		//public AttachedPanels AttachedPanels { get; set; }
+    public class AttachedPanelsItem
+    {
 		[XmlAttribute(AttributeName = "panelId")]
 		public string PanelId { get; set; }
 		[XmlAttribute(AttributeName = "panelName")]
@@ -49,10 +42,8 @@ namespace ChiliPublisherDeveloperChallange.Model
 		[XmlAttribute(AttributeName = "targetType")]
 		public string TargetType { get; set; }
 
-
 		[XmlElement(ElementName = "attachedPanels")]
-		public List<AttachedPanels> AttachedPanelsList { get; set; }
+		public AttachedPanelsItems AttachedPanelsItems { get; set; }
 
 	}
-
 }
