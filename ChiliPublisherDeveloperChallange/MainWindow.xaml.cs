@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChiliPublisherDeveloperChallange.Infrastructure;
+using ChiliPublisherDeveloperChallange.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ChiliPublisherDeveloperChallange
 {
@@ -27,7 +30,16 @@ namespace ChiliPublisherDeveloperChallange
 
         private void ReadXMLFile_Click(object sender, RoutedEventArgs e)
         {
+            RootObject item = new RootObject(); 
+            item = XmlProcessor.GetXmlRootObjectCommands(@"C:\Projects\BeerPack.xml");
 
+
+          //  MessageBox.Show(item.Lights.LightsItem.Z);
+
+            foreach (var c in item.Sequences.SequenceItems.SequenceItem)
+            {
+                MessageBox.Show(c.Panel);
+            }
         }
     }
 }

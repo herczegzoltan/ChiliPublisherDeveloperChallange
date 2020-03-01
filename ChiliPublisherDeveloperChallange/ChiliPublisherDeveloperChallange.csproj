@@ -63,21 +63,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Infrastructure\XmlReader.cs" />
+    <Compile Include="Infrastructure\XmlProcessor.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\AttachedPanels.cs" />
-    <Compile Include="Model\Folding.cs" />
-    <Compile Include="Model\Item.cs" />
-    <Compile Include="Model\Lights.cs" />
-    <Compile Include="Model\Materials.cs" />
-    <Compile Include="Model\Panels.cs" />
-    <Compile Include="Model\Sequence.cs" />
-    <Compile Include="Model\Sequences.cs" />
+    <Compile Include="Model\Panels\AttachedPanels.cs" />
+    <Compile Include="Model\Materials\MaterialsItem.cs" />
+    <Compile Include="Model\Panels\PanelsItem.cs" />
+    <Compile Include="Model\RootObject.cs" />
+    <Compile Include="Model\Lights\LightsItem.cs" />
+    <Compile Include="Infrastructure\Itemold.cs" />
+    <Compile Include="Model\Lights\Lights.cs" />
+    <Compile Include="Model\Materials\Materials.cs" />
+    <Compile Include="Model\Panels\Panels.cs" />
+    <Compile Include="Model\Sequences\SequenceItem.cs" />
+    <Compile Include="Model\Sequences\SequenceItems.cs" />
+    <Compile Include="Model\Sequences\Sequences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

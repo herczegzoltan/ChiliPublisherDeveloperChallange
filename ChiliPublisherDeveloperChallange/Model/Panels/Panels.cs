@@ -3,11 +3,11 @@ using System.Xml.Serialization;
 
 namespace ChiliPublisherDeveloperChallange.Model
 {
-    [XmlRoot(ElementName = "materials")]
-	public class Materials
+    [XmlRoot(ElementName = "panels")]
+	public class Panels
 	{
 		[XmlElement(ElementName = "item")]
-		public List<Item> Item { get; set; }
+		public PanelsItem PanelsItem { get; set; }
 	}
 
 }

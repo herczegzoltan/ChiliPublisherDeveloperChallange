@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace ChiliPublisherDeveloperChallange.Model
 {
 	[XmlRoot(ElementName = "item")]
-	public class Item
+	public class Itemold
 	{
 		[XmlAttribute(AttributeName = "id")]
 		public string Id { get; set; }
@@ -34,6 +34,8 @@ namespace ChiliPublisherDeveloperChallange.Model
 		[XmlAttribute(AttributeName = "fallOff")]
 		public string FallOff { get; set; }
 		[XmlAttribute(AttributeName = "transparency")]
+
+
 		public string Transparency { get; set; }
 		[XmlAttribute(AttributeName = "materialType")]
 		public string MaterialType { get; set; }
@@ -105,26 +107,26 @@ namespace ChiliPublisherDeveloperChallange.Model
 		public string IgnoreCollisions { get; set; }
 		[XmlAttribute(AttributeName = "mouseEnabled")]
 		public string MouseEnabled { get; set; }
-		[XmlAttribute(AttributeName = "targetType")]
-		public string TargetType { get; set; }
-		[XmlAttribute(AttributeName = "delay")]
-		public string Delay { get; set; }
-		[XmlAttribute(AttributeName = "time")]
-		public string Time { get; set; }
-		[XmlAttribute(AttributeName = "easing")]
-		public string Easing { get; set; }
-		[XmlAttribute(AttributeName = "fromXRad")]
-		public string FromXRad { get; set; }
-		[XmlAttribute(AttributeName = "toXRad")]
-		public string ToXRad { get; set; }
-		[XmlAttribute(AttributeName = "fromYRad")]
-		public string FromYRad { get; set; }
-		[XmlAttribute(AttributeName = "toYRad")]
-		public string ToYRad { get; set; }
-		[XmlAttribute(AttributeName = "fromRadius")]
-		public string FromRadius { get; set; }
-		[XmlAttribute(AttributeName = "toRadius")]
-		public string ToRadius { get; set; }
+		//[XmlAttribute(AttributeName = "targetType")]
+		//public string TargetType { get; set; }
+		//[XmlAttribute(AttributeName = "delay")]
+		//public string Delay { get; set; }
+		//[XmlAttribute(AttributeName = "time")]
+		//public string Time { get; set; }
+		//[XmlAttribute(AttributeName = "easing")]
+		//public string Easing { get; set; }
+		//[XmlAttribute(AttributeName = "fromXRad")]
+		//public string FromXRad { get; set; }
+		//[XmlAttribute(AttributeName = "toXRad")]
+		//public string ToXRad { get; set; }
+		//[XmlAttribute(AttributeName = "fromYRad")]
+		//public string FromYRad { get; set; }
+		//[XmlAttribute(AttributeName = "toYRad")]
+		//public string ToYRad { get; set; }
+		//[XmlAttribute(AttributeName = "fromRadius")]
+		//public string FromRadius { get; set; }
+		//[XmlAttribute(AttributeName = "toRadius")]
+		//public string ToRadius { get; set; }
 		[XmlAttribute(AttributeName = "fromX")]
 		public string FromX { get; set; }
 		[XmlAttribute(AttributeName = "toX")]
