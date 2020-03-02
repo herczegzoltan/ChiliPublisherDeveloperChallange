@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChiliPublisherDeveloperChallange"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1500" Width="1500" Background="#1E1E1E">
+        Title="MainWindow" Height="1500" Width="1600" Background="#1E1E1E">
     <Grid Margin="20">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1104" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -18,18 +18,36 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" >
+        <Label x:Name="UserMessage"
+               Content="Test" 
+               Grid.Column="1"
+               Grid.Row="0"
+               Foreground="White"
+               FontSize="28"/>
+
+        <StackPanel Grid.Row="0" Margin="156,0">
             <Button Margin="10" Content="Read XML file" x:Name="ReadXMLFile" Click="ReadXMLFile_Click"/>
             <Button Margin="10" Content="Draw" x:Name="CreatePreview" Click="CreatePreview_Click" />
             <Button Margin="10" Content="Save" x:Name="SavePreview" Click="SavePreview_Click" />
-
         </StackPanel>
 
-            <Image Stretch="Fill" 
-                   x:Name="RenderedPreview"
-                   Width="1000"
-                   Height="1000"
-                   Grid.Column="1"
-                   Grid.Row="1"/>   
+        <!--
+        <ListView Grid.Row="1" x:Name="ListOfPanels">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="N"  Width="auto" DisplayMemberBinding="{Binding namePanelList}" />
+                    <GridViewColumn Header="H"  Width="auto" DisplayMemberBinding="{Binding hPanelList}"/>
+                    <GridViewColumn Header="W"  Width="auto" DisplayMemberBinding="{Binding wPanelList}"/>
+                    <GridViewColumn Header="AT"  Width="auto" DisplayMemberBinding="{Binding atPanelList}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        -->
+        <Label Content="test" FontSize="45" Foreground="White" Grid.Row="1" x:Name="ListOfPanels"/>
+        <Image 
+            x:Name="RenderedPreview"
+            Grid.Column="1"
+            Grid.Row="1" Margin="70,154,70,155"
+            />
     </Grid>
 </Window>

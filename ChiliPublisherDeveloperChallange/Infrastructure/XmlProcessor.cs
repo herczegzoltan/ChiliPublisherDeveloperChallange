@@ -11,7 +11,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
 {
     public class XmlProcessor
     {
-        public static RootObject GetXmlRootObjectCommands(string xmlFilePath)
+        public static RootObject GetXmlRootObject(string xmlFilePath)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(RootObject));
 
