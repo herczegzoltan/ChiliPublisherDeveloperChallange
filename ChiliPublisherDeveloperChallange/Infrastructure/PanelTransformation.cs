@@ -11,18 +11,41 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
     {
         public static List<CustomPanel> RotatePanels(List<CustomPanel> customPanels)
         {
-            RotationState a = RotationState.none;
 
-            string rootPanel = customPanels[0].Name;
+            //string rootPanel = customPanels[0].Name;
 
+            //var asd = PanelRotate(customPanels[0].ChildPanels[0], customPanels[0]); //childPanel/root panel
 
+            MappingOneChild(customPanels[0]);
 
-
-            var asd = PanelRotate(customPanels[0].ChildPanels[0], customPanels[0]);
-
-
-            return new List<CustomPanel>();
+            return customPanels;
         }
+
+        public static void MappingOneChild(CustomPanel node)
+        {
+            
+            //foreach (CustomPanel child in node.ChildPanels)
+            //{
+            //     child = PanelRotate(child, node);
+            //    getNodes(child);
+            //}
+
+            for (int i = 0; i < node.ChildPanels.Count; i++)
+            {
+                CustomPanel childPanel = node.ChildPanels[i];
+
+                if (childPanel.IsRotatedFlag)
+                {
+                    continue;
+                }
+
+                childPanel = PanelRotate(childPanel, node);
+                //childPanel = node.ChildPanels[i];
+                MappingOneChild(childPanel);
+            }
+        }
+
+
 
         //   ---------
         //   |   2   |
@@ -33,6 +56,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
         private static CustomPanel PanelRotate(CustomPanel currentChildPanel, CustomPanel parentPanel)
         {
             //currentChildPanel = new CustomPanel();
+            //isrotated flag nem kell
 
             if (parentPanel.IsRotatedFlag)
             {
@@ -59,9 +83,10 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                         default:
                             break;
                     }
-
                     return currentChildPanel;
                 }
+
+
                 if (parentPanel.RotationState == RotationState.once)
                 {
                     switch (currentChildPanel.AT)
@@ -139,11 +164,13 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                     return currentChildPanel;
                 }
 
-                return new CustomPanel() { } ;
+                return currentChildPanel;
             }
             else
             {
-                return new CustomPanel() { };
+                //parentPanel.IsRotatedFlag = true;
+                //currentChildPanel.IsRotatedFlag = true;
+                return currentChildPanel;
             }
         }
     }
