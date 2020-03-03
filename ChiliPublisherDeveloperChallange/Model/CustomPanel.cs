@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChiliPublisherDeveloperChallange.Model
 {
-    public class CustomPanel
+    public partial class CustomPanel
     {
         public string Name { get; set; }
         public string Hight { get; set; }
@@ -15,17 +15,11 @@ namespace ChiliPublisherDeveloperChallange.Model
         public string Y { get; set; }
         public string AT { get; set; }
 
+        public bool IsRotatedFlag { get; set; }
         public CustomPanel Parent{ get; set; }
-        //public string Top { get; set; } 
-        //public string Bottom { get; set; }
-        //public string Left { get; set; }
-        //public string Right { get; set; }
-        public enum IsRotated 
-        {
-            once = 1, twice = 2, thrice = 3, none = 0
-        }
-        public List<CustomPanel> ChildPanels { get; set; }
+        public RotationState RotationState { get; set; }
 
+        public List<CustomPanel> ChildPanels { get; set; }
         public CustomPanel()
         {
             ChildPanels = new List<CustomPanel>();
