@@ -36,10 +36,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                    currentPanel.RotationState == RotationState.twice
                    )
                 {
-                    //string tempVal = currentPanel.Width;
-                    //currentPanel.Width = currentPanel.Hight;
-                    //currentPanel.Hight = tempVal;
-
                     currentPanel.X = currentPanel.Parent.X;
                     currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
                 }
@@ -62,9 +58,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                 }
 
 
-               
-
-
                 if (currentPanel.AT == "2" &&
                     currentPanel.Parent.RotationState == RotationState.none &&
                     currentPanel.RotationState == RotationState.none
@@ -75,11 +68,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
 
                     )
                 {
-                    //string tempVal = currentPanel.Width;
-                    //currentPanel.Width = currentPanel.Hight;
-                    //currentPanel.Hight = tempVal;
-
-                    currentPanel.X = currentPanel.Parent.X;
+                     currentPanel.X = currentPanel.Parent.X;
                     currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
                 }
 
@@ -105,10 +94,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                   currentPanel.RotationState == RotationState.none
                   )
                 {
-                    //string tempVal = currentPanel.Width;
-                    //currentPanel.Width = currentPanel.Hight;
-                    //currentPanel.Hight = tempVal;
-
                     currentPanel.X = currentPanel.Parent.X;
                     currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
                 }
@@ -117,16 +102,9 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                  currentPanel.Parent.RotationState == RotationState.thrice &&
                  currentPanel.RotationState == RotationState.twice)
                 {
-                    //string tempVal = currentPanel.Width;
-                    //currentPanel.Width = currentPanel.Hight;
-                    //currentPanel.Hight = tempVal;
-
                     currentPanel.X = currentPanel.Parent.X;
                     currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
                 }
-
-
-
                 CalculateReferencePointToAllPanels(currentPanel);
             }
         }

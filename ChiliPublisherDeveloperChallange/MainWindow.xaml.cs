@@ -23,12 +23,8 @@ using Rectangle = System.Drawing.Rectangle;
 
 namespace ChiliPublisherDeveloperChallange
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-
         Bitmap bm = null;
         List<CustomPanel> customPanels = null;
         List<CustomPanel> customPanelsAfterTransformation = null;
@@ -130,8 +126,6 @@ namespace ChiliPublisherDeveloperChallange
                     continue;
                 }
 
-                //childPanel = PanelRotate(childPanel, node);
-
                 Rectangle currentRectangles = new Rectangle()
                 {
                     X = childPanel.X / 5,
@@ -144,42 +138,10 @@ namespace ChiliPublisherDeveloperChallange
                 rectanglesToDraw.Add(currentRectangles);
                 CustomPanelConvertToRectagle(childPanel);
             }
-
-            //return new List<Rectangle>();
         }
 
         private void CreatePreview_Click(object sender, RoutedEventArgs e)
         {
-            //    Rectangle rootRectangle = new Rectangle()
-            //    {
-            //        X = customPanelsAfterXYCoordinates[0].X / 5,
-            //        Y = customPanelsAfterXYCoordinates[0].Y / 5,
-            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight) / 5,
-            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width) / 5
-            //    };
-
-            //    Rectangle panel2Rectangle = new Rectangle()
-            //    {
-            //        X = customPanelsAfterXYCoordinates[0].ChildPanels[0].X / 5,
-            //        Y = customPanelsAfterXYCoordinates[0].ChildPanels[0].Y / 5,
-            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[0].Hight) / 5,
-            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[0].Width) / 5
-            //    };
-
-            //    Rectangle panel3Rectangle = new Rectangle()
-            //    {
-            //        X = customPanelsAfterXYCoordinates[0].ChildPanels[1].X / 5,
-            //        Y = customPanelsAfterXYCoordinates[0].ChildPanels[1].Y / 5,
-            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[1].Hight) / 5,
-            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[1].Width) / 5
-            //    };
-
-            //List<Rectangle> rectangles = new List<Rectangle>()
-            //{
-            //    rootRectangle,
-            //    panel2Rectangle,
-            //    panel3Rectangle
-            //};
             CustomPanelConvertToRectagle(customPanelsAfterXYCoordinates[0]);
 
             bm = PanelsInserter.DrawingRectangles(bm, rectanglesToDraw);
@@ -210,86 +172,3 @@ namespace ChiliPublisherDeveloperChallange
         }
     }
 }
-
-
-//var rPanel = new CustomPanel()
-//{
-//    Name = item.Panels.PanelsItem.PanelName,
-//    Width = item.Panels.PanelsItem.PanelWidth,
-//    Hight = item.Panels.PanelsItem.PanelHeight,
-//    AT = item.Panels.PanelsItem.AttachedToSide
-//};
-//CustomPanels.Add(rPanel);
-
-
-
-//foreach (var c in item.Panels.PanelsItem.AttachedPanelsItems.AttachedPanelsItem)
-//{
-//    temp = c.PanelName + " " + c.PanelWidth + " " + c.PanelHeight + " " + "level1";
-
-//    ListOfPanels.Content = temp + "\n" + ListOfPanels.Content +"\n";
-
-//    var cPanel = new CustomPanel()
-//    {
-//        Name = c.PanelName,
-//        Width = c.PanelWidth,
-//        Hight = c.PanelHeight,
-//        AT = c.AttachedToSide
-//    };
-
-//    CustomPanels.Add(cPanel);
-
-//    foreach (var d in c.AttachedPanelsItems.AttachedPanelsItem)
-//    {
-//        temp = d.PanelName + " " + d.PanelWidth + " " + d.PanelHeight + " " + "level2";
-
-//        ListOfPanels.Content = temp + "\n" + ListOfPanels.Content + "\n";
-
-//        var dPanel = new CustomPanel()
-//        {
-//            Name = d.PanelName,
-//            Width = d.PanelWidth,
-//            Hight = d.PanelHeight,
-//            AT = d.AttachedToSide,
-//            Parent = cPanel
-//        };
-
-//        cPanel.ChildPanels.Add(dPanel);
-
-//        foreach (var k in d.AttachedPanelsItems.AttachedPanelsItem)
-//        {
-//            temp = k.PanelName + " " + k.PanelWidth + " " + k.PanelHeight + " " + "level3";
-
-//            ListOfPanels.Content = temp + "\n" + ListOfPanels.Content + "\n";
-
-//            var kPanel = new CustomPanel()
-//            {
-//                Name = k.PanelName,
-//                Width = k.PanelWidth,
-//                Hight = k.PanelHeight,
-//                AT = k.AttachedToSide,
-//                Parent = dPanel
-//            };
-
-//            dPanel.ChildPanels.Add(kPanel);
-
-//            foreach (var n in k.AttachedPanelsItems.AttachedPanelsItem)
-//            {
-//                temp = n.PanelName + " " + n.PanelWidth + " " + n.PanelHeight + " " + "level4";
-
-//                ListOfPanels.Content = temp + "\n" + ListOfPanels.Content + "\n";
-
-//                var nPanel = new CustomPanel()
-//                {
-//                    Name = n.PanelName,
-//                    Width = n.PanelWidth,
-//                    Hight = n.PanelHeight,
-//                    AT = n.AttachedToSide,
-//                    Parent = kPanel
-//                };
-
-//                kPanel.ChildPanels.Add(nPanel);
-//            }
-//        }
-//    }
-//}
