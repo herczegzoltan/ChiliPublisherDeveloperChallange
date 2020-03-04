@@ -9,8 +9,8 @@
     <Grid Margin="20">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1104" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -25,29 +25,18 @@
                Foreground="White"
                FontSize="28"/>
 
-        <StackPanel Grid.Row="0" Margin="156,0">
+        <StackPanel Grid.Row="0" >
             <Button Margin="10" Content="Read XML file" x:Name="ReadXMLFile" Click="ReadXMLFile_Click"/>
             <Button Margin="10" Content="Draw" x:Name="CreatePreview" Click="CreatePreview_Click" />
             <Button Margin="10" Content="Save" x:Name="SavePreview" Click="SavePreview_Click" />
         </StackPanel>
 
-        <!--
-        <ListView Grid.Row="1" x:Name="ListOfPanels">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="N"  Width="auto" DisplayMemberBinding="{Binding namePanelList}" />
-                    <GridViewColumn Header="H"  Width="auto" DisplayMemberBinding="{Binding hPanelList}"/>
-                    <GridViewColumn Header="W"  Width="auto" DisplayMemberBinding="{Binding wPanelList}"/>
-                    <GridViewColumn Header="AT"  Width="auto" DisplayMemberBinding="{Binding atPanelList}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        -->
-        <Label Content="test" FontSize="45" Foreground="White" Grid.Row="1" x:Name="ListOfPanels"/>
+        <Label Content="test" Foreground="White" Grid.Row="1" x:Name="ListOfPanels"/>
         <Image 
             x:Name="RenderedPreview"
             Grid.Column="1"
-            Grid.Row="1" Margin="70,154,70,155"
+            Grid.Row="1" 
+             
             />
     </Grid>
 </Window>

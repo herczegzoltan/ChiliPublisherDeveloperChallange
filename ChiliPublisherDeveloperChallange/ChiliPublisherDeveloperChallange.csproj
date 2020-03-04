@@ -64,7 +64,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\Converters.cs" />
     <Compile Include="Infrastructure\DrawingHelper.cs" />
+    <Compile Include="Infrastructure\PanelCoordinateCalculation.cs" />
     <Compile Include="Infrastructure\PanelsInserter.cs" />
     <Compile Include="Infrastructure\PanelTransformation.cs" />
     <Compile Include="Infrastructure\XmlFilter.cs" />

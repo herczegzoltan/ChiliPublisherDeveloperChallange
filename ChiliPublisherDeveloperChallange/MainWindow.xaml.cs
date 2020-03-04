@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
-
+using Rectangle = System.Drawing.Rectangle;
 
 namespace ChiliPublisherDeveloperChallange
 {
@@ -32,19 +32,21 @@ namespace ChiliPublisherDeveloperChallange
         Bitmap bm = null;
         List<CustomPanel> customPanels = null;
         List<CustomPanel> customPanelsAfterTransformation = null;
-
-
+        List<CustomPanel> customPanelsAfterXYCoordinates = null;
+        List<Rectangle> rectanglesToDraw = null;
         public MainWindow()
         {
             //Application.Current.MainWindow.WindowState = WindowState.Maximized;
             InitializeComponent();
-            bm = new Bitmap(1000, 1000);
+            bm = new Bitmap(1200, 1200);
             customPanels = new List<CustomPanel>();
-            customPanelsAfterTransformation = new List<CustomPanel>(); 
+            customPanelsAfterTransformation = new List<CustomPanel>();
+            customPanelsAfterXYCoordinates = new List<CustomPanel>();
+            rectanglesToDraw = new List<Rectangle>();
 
             using (Graphics graph = Graphics.FromImage(bm))
             {
-                System.Drawing.Rectangle ImageSize = new System.Drawing.Rectangle(0, 0, 1000, 1000);
+                System.Drawing.Rectangle ImageSize = new System.Drawing.Rectangle(0, 0, 1200, 1200);
                 graph.FillRectangle(System.Drawing.Brushes.White, ImageSize);
             }
         }
@@ -65,6 +67,7 @@ namespace ChiliPublisherDeveloperChallange
             CreateCustomPanelList(rootAttached, null);
 
             customPanelsAfterTransformation = PanelTransformation.RotatePanels(customPanels);
+            customPanelsAfterXYCoordinates = PanelCoordinateCalculation.ChangeReferencePointOfRoot(customPanels,rootObject);
 
         }
 
@@ -103,20 +106,83 @@ namespace ChiliPublisherDeveloperChallange
             }
         }
 
+        private void CustomPanelConvertToRectagle(CustomPanel node)
+        {
+            if (node.Parent == null) //than its the root
+            {
+                Rectangle rootRectangle = new Rectangle()
+                {
+                    X = customPanelsAfterXYCoordinates[0].X / 5,
+                    Y = customPanelsAfterXYCoordinates[0].Y / 5,
+                    Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight) / 5,
+                    Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width) / 5
+                };
+                node.IsDrew = true;
+                rectanglesToDraw.Add(rootRectangle);
+
+            }
+            for (int i = 0; i < node.ChildPanels.Count; i++)
+            {
+                CustomPanel childPanel = node.ChildPanels[i];
+
+                if (childPanel.IsDrew)
+                {
+                    continue;
+                }
+
+                //childPanel = PanelRotate(childPanel, node);
+
+                Rectangle currentRectangles = new Rectangle()
+                {
+                    X = childPanel.X / 5,
+                    Y = childPanel.Y / 5,
+                    Height = Converters.DoubleStringToIntWithRound(childPanel.Hight) / 5,
+                    Width = Converters.DoubleStringToIntWithRound(childPanel.Width) / 5
+                };
+                childPanel.IsDrew = true;
+
+                rectanglesToDraw.Add(currentRectangles);
+                CustomPanelConvertToRectagle(childPanel);
+            }
+
+            //return new List<Rectangle>();
+        }
+
         private void CreatePreview_Click(object sender, RoutedEventArgs e)
         {
+            //    Rectangle rootRectangle = new Rectangle()
+            //    {
+            //        X = customPanelsAfterXYCoordinates[0].X / 5,
+            //        Y = customPanelsAfterXYCoordinates[0].Y / 5,
+            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight) / 5,
+            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width) / 5
+            //    };
 
-            //bm = DrawingHelper.DrawRectangle(bm,"1000", "1000","700","300",5);
-            //bm = DrawingHelper.DrawRectangle(bm, "700", "1000", "300", "300",5);
+            //    Rectangle panel2Rectangle = new Rectangle()
+            //    {
+            //        X = customPanelsAfterXYCoordinates[0].ChildPanels[0].X / 5,
+            //        Y = customPanelsAfterXYCoordinates[0].ChildPanels[0].Y / 5,
+            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[0].Hight) / 5,
+            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[0].Width) / 5
+            //    };
 
-            //bm = PanelsInserter.InsertRoot(bm);
-            List<System.Drawing.Rectangle> rectangles = new List<System.Drawing.Rectangle>()
-            {
-                new System.Drawing.Rectangle(){X=0,Y=0, Height=100,Width=333},
+            //    Rectangle panel3Rectangle = new Rectangle()
+            //    {
+            //        X = customPanelsAfterXYCoordinates[0].ChildPanels[1].X / 5,
+            //        Y = customPanelsAfterXYCoordinates[0].ChildPanels[1].Y / 5,
+            //        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[1].Hight) / 5,
+            //        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].ChildPanels[1].Width) / 5
+            //    };
 
-                new System.Drawing.Rectangle(){X=530,Y=130,Height=444,Width=123}
-            };
-            bm = PanelsInserter.DrawingRectangles(bm, rectangles);
+            //List<Rectangle> rectangles = new List<Rectangle>()
+            //{
+            //    rootRectangle,
+            //    panel2Rectangle,
+            //    panel3Rectangle
+            //};
+            CustomPanelConvertToRectagle(customPanelsAfterXYCoordinates[0]);
+
+            bm = PanelsInserter.DrawingRectangles(bm, rectanglesToDraw);
             RenderedPreview.Source = DrawingHelper.ConvertBitmapImageToBitmap(bm);
         }
 

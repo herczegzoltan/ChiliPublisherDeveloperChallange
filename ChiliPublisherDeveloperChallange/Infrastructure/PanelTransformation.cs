@@ -11,24 +11,13 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
     {
         public static List<CustomPanel> RotatePanels(List<CustomPanel> customPanels)
         {
-
-            //string rootPanel = customPanels[0].Name;
-
-            //var asd = PanelRotate(customPanels[0].ChildPanels[0], customPanels[0]); //childPanel/root panel
-
             MappingOneChild(customPanels[0]);
 
             return customPanels;
         }
 
-        public static void MappingOneChild(CustomPanel node)
+        private static void MappingOneChild(CustomPanel node)
         {
-            
-            //foreach (CustomPanel child in node.ChildPanels)
-            //{
-            //     child = PanelRotate(child, node);
-            //    getNodes(child);
-            //}
 
             for (int i = 0; i < node.ChildPanels.Count; i++)
             {
@@ -40,12 +29,9 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                 }
 
                 childPanel = PanelRotate(childPanel, node);
-                //childPanel = node.ChildPanels[i];
                 MappingOneChild(childPanel);
             }
         }
-
-
 
         //   ---------
         //   |   2   |
@@ -55,10 +41,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
         //rotation with 90 degree clockwise
         private static CustomPanel PanelRotate(CustomPanel currentChildPanel, CustomPanel parentPanel)
         {
-            //currentChildPanel = new CustomPanel();
-            //isrotated flag nem kell
-
-            if (parentPanel.IsRotatedFlag)
+           if (parentPanel.IsRotatedFlag)
             {
                 if (parentPanel.RotationState == RotationState.none)
                 {
@@ -168,9 +151,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
             }
             else
             {
-                //parentPanel.IsRotatedFlag = true;
-                //currentChildPanel.IsRotatedFlag = true;
-                return currentChildPanel;
+                 return currentChildPanel;
             }
         }
     }

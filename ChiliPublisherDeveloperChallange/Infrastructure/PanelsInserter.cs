@@ -10,23 +10,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
 {
     public class PanelsInserter
     {
-        //public static Bitmap InsertRoot(Bitmap bm)
-        //{
-        //    RootObject item = new RootObject();
-        //    item = XmlProcessor.GetXmlRootObject(@"C:\Projects\BeerPack.xml");
-
-        //    int resizer = 5;
-        //    DrawingHelper.DrawRectangle(bm,
-        //        item.RootX,
-        //        item.RootY,
-        //        item.Panels.PanelsItem.PanelWidth,
-        //        item.Panels.PanelsItem.PanelHeight,
-        //        resizer
-        //        );
-
-        //    return bm;
-        //}
-
         public static Bitmap DrawingRectangles(Bitmap bm, List<Rectangle> listRec)
         {
 
