@@ -26,22 +26,32 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
             {
                 CustomPanel currentPanel = node.ChildPanels[i];
 
-                if (currentPanel.AT == "3" &&
-                    currentPanel.Parent.RotationState == RotationState.none &&
-                    currentPanel.RotationState == RotationState.thrice)
+
+                if (currentPanel.AT == "0" &&
+                   currentPanel.Parent.RotationState == RotationState.none &&
+                   currentPanel.RotationState == RotationState.twice
+                   ||
+                   currentPanel.AT == "1" &&
+                   currentPanel.Parent.RotationState == RotationState.once &&
+                   currentPanel.RotationState == RotationState.twice
+                   )
                 {
-                    string tempVal = currentPanel.Width;
-                    currentPanel.Width = currentPanel.Hight;
-                    currentPanel.Hight = tempVal;
+                    //string tempVal = currentPanel.Width;
+                    //currentPanel.Width = currentPanel.Hight;
+                    //currentPanel.Hight = tempVal;
 
-                    currentPanel.X = currentPanel.Parent.X - Converters.DoubleStringToIntWithRound(currentPanel.Width);
-                    currentPanel.Y = currentPanel.Parent.Y;
+                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
                 }
-
 
                 if (currentPanel.AT == "1" &&
                     currentPanel.Parent.RotationState == RotationState.none &&
-                    currentPanel.RotationState == RotationState.once)
+                    currentPanel.RotationState == RotationState.once
+                    ||
+                    currentPanel.AT == "2" &&
+                    currentPanel.Parent.RotationState == RotationState.once &&
+                    currentPanel.RotationState == RotationState.once
+                    )
                 {
                     string tempVal = currentPanel.Width;
                     currentPanel.Width = currentPanel.Hight;
@@ -51,12 +61,72 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                     currentPanel.Y = currentPanel.Parent.Y;
                 }
 
-                //if (childPanel.IsRotatedFlag)
-                //{
-                //    continue;
-                //}
-                //todo
-                //childPanel = PanelRotate(childPanel, node);
+
+               
+
+
+                if (currentPanel.AT == "2" &&
+                    currentPanel.Parent.RotationState == RotationState.none &&
+                    currentPanel.RotationState == RotationState.none
+                    ||
+                    currentPanel.AT == "1" &&
+                    currentPanel.Parent.RotationState == RotationState.thrice &&
+                    currentPanel.RotationState == RotationState.none
+
+                    )
+                {
+                    //string tempVal = currentPanel.Width;
+                    //currentPanel.Width = currentPanel.Hight;
+                    //currentPanel.Hight = tempVal;
+
+                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
+                }
+
+
+                if (currentPanel.AT == "3" &&
+                   currentPanel.Parent.RotationState == RotationState.none &&
+                   currentPanel.RotationState == RotationState.thrice)
+                {
+                    string tempVal = currentPanel.Width;
+                    currentPanel.Width = currentPanel.Hight;
+                    currentPanel.Hight = tempVal;
+
+                    currentPanel.X = currentPanel.Parent.X - Converters.DoubleStringToIntWithRound(currentPanel.Width);
+                    currentPanel.Y = currentPanel.Parent.Y;
+                }
+
+                if (currentPanel.AT == "3" &&
+                  currentPanel.Parent.RotationState == RotationState.once &&
+                  currentPanel.RotationState == RotationState.none
+                  ||
+                  currentPanel.AT == "2" &&
+                  currentPanel.Parent.RotationState == RotationState.none &&
+                  currentPanel.RotationState == RotationState.none
+                  )
+                {
+                    //string tempVal = currentPanel.Width;
+                    //currentPanel.Width = currentPanel.Hight;
+                    //currentPanel.Hight = tempVal;
+
+                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
+                }
+
+                if (currentPanel.AT == "3" &&
+                 currentPanel.Parent.RotationState == RotationState.thrice &&
+                 currentPanel.RotationState == RotationState.twice)
+                {
+                    //string tempVal = currentPanel.Width;
+                    //currentPanel.Width = currentPanel.Hight;
+                    //currentPanel.Hight = tempVal;
+
+                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
+                }
+
+
+
                 CalculateReferencePointToAllPanels(currentPanel);
             }
         }
