@@ -21,6 +21,14 @@ using System.Windows.Shapes;
 using System.Xml;
 using Rectangle = System.Drawing.Rectangle;
 
+
+
+//TODO:
+/// <summary>
+/// - Offset calculation
+/// - Cover more transformation cases
+/// - Generic for converters
+/// </summary>
 namespace ChiliPublisherDeveloperChallange
 {
     public partial class MainWindow : Window
@@ -29,20 +37,24 @@ namespace ChiliPublisherDeveloperChallange
         List<CustomPanel> customPanels = null;
         List<CustomPanel> customPanelsAfterTransformation = null;
         List<CustomPanel> customPanelsAfterXYCoordinates = null;
-        List<Rectangle> rectanglesToDraw = null;
+        List<RectangleWrapper> rectanglesToDraw = null;
+
         public MainWindow()
         {
             //Application.Current.MainWindow.WindowState = WindowState.Maximized;
             InitializeComponent();
-            bm = new Bitmap(1200, 1200);
             customPanels = new List<CustomPanel>();
             customPanelsAfterTransformation = new List<CustomPanel>();
             customPanelsAfterXYCoordinates = new List<CustomPanel>();
-            rectanglesToDraw = new List<Rectangle>();
+            rectanglesToDraw = new List<RectangleWrapper>();
 
+        }
+        private void SetUpBitmapDimensions(int originalDocumentWidth, int originalDocumentHeight)
+        {
+            bm = new Bitmap(originalDocumentWidth, originalDocumentHeight);
             using (Graphics graph = Graphics.FromImage(bm))
             {
-                Rectangle ImageSize = new Rectangle(0, 0, 1200, 1200);
+                Rectangle ImageSize = new Rectangle(0, 0, originalDocumentWidth, originalDocumentHeight);
                 graph.FillRectangle(System.Drawing.Brushes.White, ImageSize);
             }
         }
@@ -53,6 +65,8 @@ namespace ChiliPublisherDeveloperChallange
             {
                 RootObject rootObject = new RootObject();
                 rootObject = XmlProcessor.GetXmlRootObject(@"" + XmlSelector.GetSelectedXmlPath());
+
+                SetUpBitmapDimensions(int.Parse(rootObject.OriginalDocumentWidth), int.Parse(rootObject.OriginalDocumentHeight));
 
                 AttachedPanelsItem rootAttached = new AttachedPanelsItem()
                 {
@@ -116,15 +130,22 @@ namespace ChiliPublisherDeveloperChallange
         {
             if (node.Parent == null)
             {
-                Rectangle rootRectangle = new Rectangle()
+
+                RectangleWrapper rectangleWrapper = new RectangleWrapper()
                 {
-                    X = customPanelsAfterXYCoordinates[0].X / 5,
-                    Y = customPanelsAfterXYCoordinates[0].Y / 5,
-                    Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight) / 5,
-                    Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width) / 5
+                    ActualRectangle = new Rectangle()
+                    {
+                        X = customPanelsAfterXYCoordinates[0].X,
+                        Y = customPanelsAfterXYCoordinates[0].Y,
+                        Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight),
+                        Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width)
+                    },
+                    Name = node.Name
+                    
                 };
+
                 node.IsDrew = true;
-                rectanglesToDraw.Add(rootRectangle);
+                rectanglesToDraw.Add(rectangleWrapper);
 
             }
             for (int i = 0; i < node.ChildPanels.Count; i++)
@@ -136,13 +157,19 @@ namespace ChiliPublisherDeveloperChallange
                     continue;
                 }
 
-                Rectangle currentRectangles = new Rectangle()
+                RectangleWrapper currentRectangles = new RectangleWrapper()
                 {
-                    X = childPanel.X / 5,
-                    Y = childPanel.Y / 5,
-                    Height = Converters.DoubleStringToIntWithRound(childPanel.Hight) / 5,
-                    Width = Converters.DoubleStringToIntWithRound(childPanel.Width) / 5
+                    ActualRectangle = new Rectangle()
+                    {
+                        X = childPanel.X,
+                        Y = childPanel.Y,
+                        Height = Converters.DoubleStringToIntWithRound(childPanel.Hight),
+                        Width = Converters.DoubleStringToIntWithRound(childPanel.Width)
+                    },
+                    Name = childPanel.Name
+
                 };
+    
                 childPanel.IsDrew = true;
 
                 rectanglesToDraw.Add(currentRectangles);
@@ -155,6 +182,7 @@ namespace ChiliPublisherDeveloperChallange
             CustomPanelConvertToRectagle(customPanelsAfterXYCoordinates[0]);
 
             bm = PanelsInserter.DrawingRectangles(bm, rectanglesToDraw);
+
             RenderedPreview.Source = DrawingHelper.ConvertBitmapImageToBitmap(bm);
         }
 
