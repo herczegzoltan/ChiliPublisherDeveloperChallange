@@ -95,7 +95,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                   currentPanel.RotationState == RotationState.none
                   )
                 {
-                    //currentPanel.X = currentPanel.Parent.X;
                     currentPanel.X = OffsetCalculationForPlaceToMiddle(currentPanel.Parent.X,currentPanel.Parent.Width,currentPanel.Width);
                     currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
                 }
