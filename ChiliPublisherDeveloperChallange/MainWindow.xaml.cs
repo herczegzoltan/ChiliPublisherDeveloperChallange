@@ -21,14 +21,6 @@ using System.Windows.Shapes;
 using System.Xml;
 using Rectangle = System.Drawing.Rectangle;
 
-
-
-//TODO:
-/// <summary>
-/// - Offset calculation
-/// - Cover more transformation cases
-/// - Generic for converters
-/// </summary>
 namespace ChiliPublisherDeveloperChallange
 {
     public partial class MainWindow : Window
