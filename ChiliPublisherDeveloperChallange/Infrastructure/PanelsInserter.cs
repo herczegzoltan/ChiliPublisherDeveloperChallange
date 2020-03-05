@@ -22,8 +22,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                     }
                     using (Pen thick_pen = new Pen(Color.Black, 3))
                     {
-                        //itemRec.ActualRectangle.X = itemRec.ActualRectangle.X + itemRec.Offset;
-
                         Rectangle temp = new Rectangle();
 
                         temp = itemRec.ActualRectangle;
