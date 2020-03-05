@@ -13,6 +13,7 @@ namespace ChiliPublisherDeveloperChallange.Model
         public string Width { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public int Offset { get; set; }
         public string AT { get; set; }
         public bool IsRotatedFlag { get; set; }
         public bool IsDrew { get; set; }

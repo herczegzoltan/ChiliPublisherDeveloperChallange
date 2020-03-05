@@ -11,5 +11,6 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
     {
         public Rectangle ActualRectangle { get; set; }
         public string Name { get; set; }
+        public int Offset { get; set; }
     }
 }

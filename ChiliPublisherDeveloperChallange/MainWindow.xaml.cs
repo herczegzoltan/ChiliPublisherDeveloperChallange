@@ -99,10 +99,12 @@ namespace ChiliPublisherDeveloperChallange
                 {
                     Hight = currentRootObject.PanelHeight,
                     Width = currentRootObject.PanelWidth,
+                    Offset = Converters.DoubleStringToIntWithRound(currentRootObject.HingeOffset),
                     Name = currentRootObject.PanelName,
                     AT = currentRootObject.AttachedToSide,
                     IsRotatedFlag = true,
                     RotationState = RotationState.none
+                    
                 };
                 customPanels.Add(parentCustomPanel);
                 
@@ -114,6 +116,7 @@ namespace ChiliPublisherDeveloperChallange
                     Name = n.PanelName,
                     Width = n.PanelWidth,
                     Hight = n.PanelHeight,
+                    Offset = Converters.DoubleStringToIntWithRound(n.HingeOffset),
                     AT = n.AttachedToSide,
                     Parent = parentCustomPanel,
                     IsRotatedFlag = false,
@@ -140,8 +143,8 @@ namespace ChiliPublisherDeveloperChallange
                         Height = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Hight),
                         Width = Converters.DoubleStringToIntWithRound(customPanelsAfterXYCoordinates[0].Width)
                     },
-                    Name = node.Name
-                    
+                    Name = node.Name,
+                    Offset = node.Offset
                 };
 
                 node.IsDrew = true;
@@ -166,8 +169,8 @@ namespace ChiliPublisherDeveloperChallange
                         Height = Converters.DoubleStringToIntWithRound(childPanel.Hight),
                         Width = Converters.DoubleStringToIntWithRound(childPanel.Width)
                     },
-                    Name = childPanel.Name
-
+                    Name = childPanel.Name,
+                    Offset = childPanel.Offset
                 };
     
                 childPanel.IsDrew = true;
