@@ -36,7 +36,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                    currentPanel.RotationState == RotationState.twice
                    )
                 {
-                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.X = OffsetCalculationForPlaceToMiddle(currentPanel.Parent.X, currentPanel.Parent.Width, currentPanel.Width);
                     currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
                 }
 
@@ -68,7 +68,8 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
 
                     )
                 {
-                     currentPanel.X = currentPanel.Parent.X;
+                     //currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.X = OffsetCalculationForPlaceToMiddle(currentPanel.Parent.X, currentPanel.Parent.Width, currentPanel.Width);
                     currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
                 }
 
@@ -94,7 +95,8 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                   currentPanel.RotationState == RotationState.none
                   )
                 {
-                    currentPanel.X = currentPanel.Parent.X;
+                    //currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.X = OffsetCalculationForPlaceToMiddle(currentPanel.Parent.X,currentPanel.Parent.Width,currentPanel.Width);
                     currentPanel.Y = currentPanel.Parent.Y - Converters.DoubleStringToIntWithRound(currentPanel.Hight);
                 }
 
@@ -102,11 +104,17 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
                  currentPanel.Parent.RotationState == RotationState.thrice &&
                  currentPanel.RotationState == RotationState.twice)
                 {
-                    currentPanel.X = currentPanel.Parent.X;
+                    currentPanel.X = OffsetCalculationForPlaceToMiddle(currentPanel.Parent.X, currentPanel.Parent.Width, currentPanel.Width);
                     currentPanel.Y = currentPanel.Parent.Y + Converters.DoubleStringToIntWithRound(currentPanel.Parent.Hight);
                 }
                 CalculateReferencePointToAllPanels(currentPanel);
             }
+
+        }
+
+        private  static int OffsetCalculationForPlaceToMiddle(int currentPanelX, string currentParentPanelWidth, string currentPanelWidth )
+        {
+            return currentPanelX + (int)((Converters.DoubleStringToIntWithRound(currentParentPanelWidth) - Converters.DoubleStringToIntWithRound(currentPanelWidth)) /2);
         }
     }
 }

@@ -57,6 +57,7 @@ namespace ChiliPublisherDeveloperChallange
             {
                 RootObject rootObject = new RootObject();
                 rootObject = XmlProcessor.GetXmlRootObject(@"" + XmlSelector.GetSelectedXmlPath());
+                //rootObject = XmlProcessor.GetXmlRootObject(@"C:\Projects\BeerPack.xml");
 
                 SetUpBitmapDimensions(int.Parse(rootObject.OriginalDocumentWidth), int.Parse(rootObject.OriginalDocumentHeight));
 
