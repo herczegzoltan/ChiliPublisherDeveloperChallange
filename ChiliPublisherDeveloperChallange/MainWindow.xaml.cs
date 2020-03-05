@@ -114,7 +114,7 @@ namespace ChiliPublisherDeveloperChallange
 
         private void CustomPanelConvertToRectagle(CustomPanel node)
         {
-            if (node.Parent == null) //than its the root
+            if (node.Parent == null)
             {
                 Rectangle rootRectangle = new Rectangle()
                 {
@@ -160,25 +160,7 @@ namespace ChiliPublisherDeveloperChallange
 
         private void SavePreview_Click(object sender, RoutedEventArgs e)
         {
-            Graphics g = Graphics.FromImage(bm);
-            g.Flush();
-            bm.Save("file.jpg",ImageFormat.Jpeg);
-            g.Dispose();
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.Filter = "JPeg Image|*.jpg";
-            saveFileDialog1.Title = "Save an Image File";
-            saveFileDialog1.ShowDialog();
-
-            if (saveFileDialog1.FileName != "")
-            {
-                FileStream fs = (FileStream)saveFileDialog1.OpenFile();
-
-                bm.Save(fs,ImageFormat.Jpeg);
-                fs.Close();
-                UserMessage.Content = "File saved successfully!";
-            }
+            UserMessage.Content = BitmapSaveToJpg.SavePreview(bm);
         }
     }
 }

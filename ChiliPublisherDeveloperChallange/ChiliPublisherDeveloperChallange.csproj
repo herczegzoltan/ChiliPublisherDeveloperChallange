@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\BitmapSaveToJpg.cs" />
     <Compile Include="Infrastructure\Converters.cs" />
     <Compile Include="Infrastructure\DrawingHelper.cs" />
     <Compile Include="Infrastructure\PanelCoordinateCalculation.cs" />
