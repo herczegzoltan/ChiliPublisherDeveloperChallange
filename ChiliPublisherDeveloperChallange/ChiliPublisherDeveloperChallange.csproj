@@ -70,7 +70,6 @@
     <Compile Include="Infrastructure\PanelCoordinateCalculation.cs" />
     <Compile Include="Infrastructure\PanelsInserter.cs" />
     <Compile Include="Infrastructure\PanelTransformation.cs" />
-    <Compile Include="Infrastructure\XmlFilter.cs" />
     <Compile Include="Infrastructure\XmlProcessor.cs" />
     <Compile Include="Infrastructure\XmlSelector.cs" />
     <Compile Include="MainWindow.xaml.cs">

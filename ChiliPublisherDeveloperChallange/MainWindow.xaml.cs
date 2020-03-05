@@ -42,7 +42,7 @@ namespace ChiliPublisherDeveloperChallange
 
             using (Graphics graph = Graphics.FromImage(bm))
             {
-                System.Drawing.Rectangle ImageSize = new System.Drawing.Rectangle(0, 0, 1200, 1200);
+                Rectangle ImageSize = new Rectangle(0, 0, 1200, 1200);
                 graph.FillRectangle(System.Drawing.Brushes.White, ImageSize);
             }
         }
