@@ -19,24 +19,24 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="UserMessage"
-               Content="Test" 
+               Content="User Message..." 
                Grid.Column="1"
                Grid.Row="0"
                Foreground="White"
-               FontSize="28"/>
+               FontSize="24"
+               BorderThickness="1"
+               BorderBrush="White"/>
 
         <StackPanel Grid.Row="0" >
-            <Button Margin="10" Content="Read XML file" x:Name="ReadXMLFile" Click="ReadXMLFile_Click"/>
-            <Button Margin="10" Content="Draw" x:Name="CreatePreview" Click="CreatePreview_Click" />
-            <Button Margin="10" Content="Save" x:Name="SavePreview" Click="SavePreview_Click" />
+            <Button Margin="10" Content="Open XML file" x:Name="ReadXMLFile" Click="ReadXMLFile_Click"/>
+            <Button Margin="10" Content="Draw preview" x:Name="CreatePreview" Click="CreatePreview_Click" IsEnabled="False" />
+            <Button Margin="10" Content="Save preview to File" x:Name="SavePreview" Click="SavePreview_Click" IsEnabled="False"/>
         </StackPanel>
 
-        <Label Content="test" Foreground="White" Grid.Row="1" x:Name="ListOfPanels"/>
         <Image 
             x:Name="RenderedPreview"
             Grid.Column="1"
             Grid.Row="1" 
-             
             />
     </Grid>
 </Window>

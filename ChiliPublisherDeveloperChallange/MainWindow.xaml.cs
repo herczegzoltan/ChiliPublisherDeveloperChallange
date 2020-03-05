@@ -49,22 +49,32 @@ namespace ChiliPublisherDeveloperChallange
 
         private void ReadXMLFile_Click(object sender, RoutedEventArgs e)
         {
-            RootObject rootObject = new RootObject();
-            rootObject = XmlProcessor.GetXmlRootObject(@"C:\Projects\BeerPack.xml");
-
-            AttachedPanelsItem rootAttached = new AttachedPanelsItem()
+            try
             {
-                PanelName = rootObject.Panels.PanelsItem.PanelName,
-                PanelWidth = rootObject.Panels.PanelsItem.PanelWidth,
-                PanelHeight = rootObject.Panels.PanelsItem.PanelHeight,
-                AttachedPanelsItems = rootObject.Panels.PanelsItem.AttachedPanelsItems
-            };
+                RootObject rootObject = new RootObject();
+                rootObject = XmlProcessor.GetXmlRootObject(@"" + XmlSelector.GetSelectedXmlPath());
 
-            CreateCustomPanelList(rootAttached, null);
+                AttachedPanelsItem rootAttached = new AttachedPanelsItem()
+                {
+                    PanelName = rootObject.Panels.PanelsItem.PanelName,
+                    PanelWidth = rootObject.Panels.PanelsItem.PanelWidth,
+                    PanelHeight = rootObject.Panels.PanelsItem.PanelHeight,
+                    AttachedPanelsItems = rootObject.Panels.PanelsItem.AttachedPanelsItems
+                };
 
-            customPanelsAfterTransformation = PanelTransformation.RotatePanels(customPanels);
-            customPanelsAfterXYCoordinates = PanelCoordinateCalculation.ChangeReferencePointOfRoot(customPanels,rootObject);
+                CreateCustomPanelList(rootAttached, null);
 
+                customPanelsAfterTransformation = PanelTransformation.RotatePanels(customPanels);
+                customPanelsAfterXYCoordinates = PanelCoordinateCalculation.ChangeReferencePointOfRoot(customPanels, rootObject);
+
+                UserMessage.Content = "File info: Xml file was successfully read!";
+                CreatePreview.IsEnabled = true;
+                SavePreview.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                UserMessage.Content = "File error: " + ex.Message + "!";
+            }
         }
 
         private void CreateCustomPanelList(AttachedPanelsItem currentRootObject, CustomPanel parentCustomPanel)

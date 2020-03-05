@@ -20,7 +20,7 @@ namespace ChiliPublisherDeveloperChallange.Infrastructure
         //    {
         //        return (int)Math.Round(Convert.ToDouble(value), 0);
         //    }
-        //    //return (int)Math.Round(Convert.ToDouble(inputValue), 0);
+        //    //return (int)Math.Round(Convert.ToDoub le(inputValue), 0);
         //}
 
         public static int DoubleStringToIntWithRound(string value)
